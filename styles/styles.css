@@ -150,7 +150,8 @@ section {
 /* Buttons */
 .cta-button {
     display: inline-block;
-    padding: 1rem 2.5rem;
+    padding: 1.1rem 3rem;
+    /* Slightly larger padding */
     background-color: var(--accent-color);
     color: var(--text-light);
     font-weight: bold;
@@ -164,56 +165,77 @@ section {
 }
 
 .cta-button:hover {
-    transform: translateY(-3px);
+    transform: translateY(-5px);
+    /* More pronounced lift */
     background-color: #8C5C30;
-    box-shadow: var(--shadow-medium);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    /* Deeper shadow on hover */
 }
 
 /* ==========================================================================
-   Header & Navigation
+   Header & Navigation (Redesigned)
    ========================================================================== */
 .header {
-    background-color: var(--bg-light);
-    box-shadow: var(--shadow-subtle);
+    background-color: rgba(251, 249, 246, 0.85);
+    /* Slightly translucent background */
+    backdrop-filter: blur(10px);
+    /* Glassmorphism blur effect */
+    -webkit-backdrop-filter: blur(10px);
+    /* For Safari compatibility */
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+    /* More prominent shadow */
     position: sticky;
     top: 0;
     z-index: 1000;
+    border-bottom: 1px solid rgba(50, 27, 21, 0.1);
+    /* Subtle bottom border */
+    transition: background-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .header-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 1.5rem 2rem;
+    padding: 1.2rem 2rem;
     display: flex;
     justify-content: space-between;
+    /* Logo left, Nav/Toggle right */
     align-items: center;
 }
 
 .logo {
     font-family: var(--font-family-primary);
-    font-size: 1.8rem;
+    font-size: 1.9rem;
     font-weight: 800;
     color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
-.nav ul {
+.site-logo {
+    height: 38px;
+    width: auto;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+}
+
+.nav-list {
     list-style: none;
     display: flex;
-    gap: 2.5rem;
+    /* Desktop: horizontal layout */
+    gap: 2.8rem;
     align-items: center;
 }
 
 .nav a {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     font-weight: 500;
     text-transform: uppercase;
     color: var(--text-dark);
     position: relative;
-    padding-bottom: 0.2rem;
-    transition: color var(--transition-fast);
+    padding-bottom: 0.3rem;
+    transition: color var(--transition-fast), text-shadow var(--transition-fast);
 }
 
-/* Elegant underline animation */
 .nav a::after {
     content: '';
     position: absolute;
@@ -230,20 +252,38 @@ section {
     width: 100%;
 }
 
-/* Style for the Resume button */
+.nav a:hover {
+    color: var(--accent-color);
+    text-shadow: 0 0 5px rgba(163, 111, 61, 0.3);
+}
+
+.nav a.active {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+/* Resume Button in Nav */
 .nav-cta {
     background-color: var(--accent-color);
     color: var(--text-light) !important;
-    padding: 0.75rem 1.5rem;
+    padding: 0.8rem 1.8rem;
     border-radius: var(--border-radius-sm);
     font-weight: 700;
     letter-spacing: 1px;
-    transition: background-color var(--transition-fast), transform var(--transition-fast);
+    transition: background-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+    border: none;
+    /* Ensure no default button border */
+    cursor: pointer;
+    text-decoration: none;
+    /* Override default anchor underline */
+    display: inline-block;
+    /* Ensure padding works */
 }
 
 .nav-cta:hover {
     background-color: #8C5C30;
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
 .nav-cta::after {
@@ -253,17 +293,63 @@ section {
 
 /* Profile Icon in Navigation */
 .profile-icon {
-    width: 28px;
-    height: 28px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
     filter: invert(0.8) sepia(1) saturate(5) hue-rotate(330deg);
-    /* Gives it a golden tint */
     transition: transform var(--transition-fast), filter var(--transition-fast);
 }
 
 .profile-icon:hover {
-    transform: scale(1.1);
+    transform: scale(1.15);
     filter: invert(0) sepia(0) saturate(0) hue-rotate(0deg);
-    /* Reverts to original color or black */
+}
+
+/* Logout Button Specific Styling */
+.logout-btn {
+    /* Inherits nav-cta styles, but can be customized here */
+    padding: 0.7rem 1.5rem;
+    /* Slightly smaller for logout */
+    font-size: 1rem;
+}
+
+/* ==========================================================================
+   Mobile Menu Toggle (Hamburger Icon)
+   ========================================================================== */
+.mobile-menu-toggle {
+    display: none;
+    /* Hidden on desktop */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 1001;
+    /* Above other content */
+    position: relative;
+    /* For animation */
+}
+
+.mobile-menu-toggle .bar {
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hamburger to X animation */
+.mobile-menu-toggle.active .bar:nth-child(1) {
+    transform: translateY(8.5px) rotate(45deg);
+}
+
+.mobile-menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active .bar:nth-child(3) {
+    transform: translateY(-8.5px) rotate(-45deg);
 }
 
 /* ==========================================================================
@@ -277,47 +363,108 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 70vh;
-    /* Ensure it takes up a good portion of the viewport */
+    min-height: 80vh;
+    /* Make it taller for more impact */
     position: relative;
     overflow: hidden;
+    /* Crucial to contain the animated blobs */
+    isolation: isolate;
+    /* Creates a new stacking context for pseudo-elements */
+}
+
+/* Animated Background Blobs */
+.hero::before,
+.hero::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    /* Creates the soft, blurred effect */
+    opacity: 0.6;
+    z-index: 0;
+    /* Ensures they stay behind the content */
+    animation: blob-move 15s infinite alternate ease-in-out;
 }
 
 .hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(50, 27, 21, 0.9) 0%, rgba(163, 111, 61, 0.2) 100%);
-    z-index: 1;
+    width: 400px;
+    height: 400px;
+    background-color: var(--accent-color);
+    /* Muted gold blob */
+    top: -100px;
+    left: -100px;
+    animation-delay: 0s;
+}
+
+.hero::after {
+    width: 500px;
+    height: 500px;
+    background-color: var(--secondary-color);
+    /* Light beige blob */
+    bottom: -150px;
+    right: -150px;
+    animation-delay: 2s;
+    /* Stagger the animation start */
+}
+
+@keyframes blob-move {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    25% {
+        transform: translate(50px, -30px) scale(1.05);
+    }
+
+    50% {
+        transform: translate(-20px, 40px) scale(0.95);
+    }
+
+    75% {
+        transform: translate(30px, -50px) scale(1.1);
+    }
+
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
 }
 
 .hero-content {
     position: relative;
-    z-index: 2;
+    z-index: 1;
+    /* Ensures content is above the blobs */
+    max-width: 800px;
+    /* Constrain content width */
+    padding: 20px;
 }
 
 .hero-content h1 {
-    font-size: clamp(3rem, 8vw, 5rem);
-    margin-bottom: 0.5rem;
+    font-size: clamp(3.5rem, 9vw, 6rem);
+    /* Larger and more responsive */
+    margin-bottom: 0.8rem;
     color: var(--secondary-color);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    /* Subtle text shadow */
 }
 
 .hero-content h2 {
-    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-size: clamp(1.8rem, 4.5vw, 2.5rem);
+    /* Slightly larger subtitle */
     font-weight: 400;
     color: var(--secondary-color);
-    margin-bottom: 2rem;
-    min-height: 2.5rem;
+    margin-bottom: 2.5rem;
+    min-height: 3rem;
     /* Prevent layout shift for typewriter effect */
+    letter-spacing: 1px;
 }
 
 .hero-content p {
-    max-width: 600px;
-    margin: 0 auto 2.5rem;
+    max-width: 650px;
+    /* Slightly wider paragraph */
+    margin: 0 auto 3rem;
     color: var(--secondary-color);
+    font-size: 1.15rem;
+    line-height: 1.8;
 }
 
 /* ==========================================================================
@@ -938,14 +1085,14 @@ section {
 }
 
 /* ==========================================================================
-   Responsive Design
+   Responsive Design (Header Specific)
    ========================================================================== */
 @media (max-width: 992px) {
     .header-container {
         padding: 1.5rem;
     }
 
-    .nav ul {
+    .nav-list {
         gap: 1.5rem;
     }
 
@@ -968,29 +1115,122 @@ section {
 }
 
 @media (max-width: 768px) {
-    .header-container {
+    .nav {
+        /* Mobile menu overlay */
+        position: fixed;
+        top: 0;
+        right: -100%;
+        /* Start off-screen */
+        width: 100%;
+        height: 100%;
+        background-color: var(--primary-color);
+        /* Dark background for mobile menu */
+        transition: right 0.4s ease-in-out;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 999;
+        /* Below toggle, above content */
+    }
+
+    .nav.active {
+        right: 0;
+        /* Slide in */
+    }
+
+    .nav-list {
         flex-direction: column;
-        gap: 1.5rem;
+        gap: 2.5rem;
+        text-align: center;
+        width: 100%;
+        /* Ensure list takes full width of nav overlay */
+    }
+
+    .nav-list li {
+        width: 100%;
+        /* Each list item takes full width */
+    }
+
+    .nav-list a,
+    .nav-list .nav-cta {
+        color: var(--secondary-color);
+        /* Light text on dark background */
+        font-size: 1.5rem;
+        /* Larger font for mobile */
+        padding: 0.8rem 0;
+        display: block;
+        /* Make links block-level for full tap area */
+        width: 100%;
+        text-shadow: none;
+        /* Remove text shadow */
+    }
+
+    .nav-list a::after {
+        background-color: var(--accent-color);
+        /* Accent color for mobile underline */
+    }
+
+    .nav-list a:hover {
+        color: var(--accent-color);
+    }
+
+    .nav-list a.active {
+        color: var(--accent-color);
+        /* Active link color on mobile */
+    }
+
+    .nav-list .nav-cta {
+        background-color: var(--accent-color);
+        color: var(--text-light) !important;
+        margin-top: 1.5rem;
+        /* Space above button */
+    }
+
+    .nav-list .nav-cta:hover {
+        background-color: #8C5C30;
+    }
+
+    .mobile-menu-toggle {
+        display: flex;
+        /* Show hamburger on mobile */
+    }
+
+    .header-container {
         padding: 1rem;
     }
 
-    .nav ul {
-        flex-direction: column;
-        gap: 1.5rem;
-        text-align: center;
+    .logo {
+        font-size: 1.6rem;
+        gap: 8px;
     }
 
-    .profile-link {
-        order: -1;
-        /* Puts the profile icon first on mobile */
+    .site-logo {
+        height: 32px;
     }
 
     .hero {
         padding: 6rem 1rem;
+        min-height: 60vh;
     }
 
-    .section-title {
-        font-size: 2rem;
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+
+    .hero-content h2 {
+        font-size: 1.5rem;
+        min-height: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .hero::before,
+    .hero::after {
+        width: 250px;
+        height: 250px;
+        filter: blur(50px);
     }
 
     .projects-grid,
@@ -1041,13 +1281,5 @@ section {
     .cta-button {
         padding: 0.8rem 2rem;
         font-size: 0.9rem;
-    }
-
-    .logo {
-        font-size: 1.5rem;
-    }
-
-    .nav a {
-        font-size: 1rem;
     }
 }
