@@ -1,0 +1,241 @@
+/* ==========================================================================
+   Auth Pages (Landing, Login, Signup) Specific Styles
+   ========================================================================== */
+body.auth-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* Ensures the body itself takes full viewport height */
+    justify-content: center;
+    align-items: center;
+    background-color: var(--secondary-color);
+    /* Use your site's background color */
+    color: var(--text-dark);
+    font-family: var(--font-family-secondary);
+}
+
+.auth-container {
+    background-color: var(--bg-light);
+    padding: 3rem 2.5rem;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-medium);
+    max-width: 450px;
+    width: 90%;
+    text-align: center;
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.auth-container h2 {
+    font-family: var(--font-family-primary);
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+}
+
+.auth-form .form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.auth-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.auth-form input[type="email"],
+.auth-form input[type="password"],
+.auth-form input[type="text"] {
+    width: 100%;
+    padding: 0.9rem 1.2rem;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius-sm);
+    font-size: 1rem;
+    font-family: var(--font-family-secondary);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.auth-form input:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(163, 111, 61, 0.2);
+    outline: none;
+}
+
+.auth-button {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    font-weight: bold;
+    border: none;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: background-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.auth-button:hover {
+    background-color: #553D2A;
+    /* Slightly lighter brown on hover */
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-subtle);
+}
+
+.auth-link-text {
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+    color: #666;
+}
+
+.auth-link-text a {
+    color: var(--primary-color);
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+.auth-link-text a:hover {
+    color: var(--accent-color);
+}
+
+.auth-message {
+    margin-top: 1.5rem;
+    padding: 0.8rem;
+    border-radius: var(--border-radius-sm);
+    font-weight: 500;
+    display: none;
+    /* Hidden by default */
+}
+
+.auth-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.auth-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Landing Page Specific Styles */
+.landing-hero {
+    min-height: 100vh;
+    /* Make it full viewport height */
+    display: flex;
+    /* Use flexbox for centering */
+    flex-direction: column;
+    justify-content: center;
+    /* Center content vertically */
+    align-items: center;
+    /* Center content horizontally */
+    text-align: center;
+    background-color: var(--primary-color);
+    /* This color already fills the 100vh area */
+    color: var(--secondary-color);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.landing-hero::before,
+.landing-hero::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    /* Creates the soft, blurred effect */
+    opacity: 0.4;
+    z-index: 0;
+    animation: blob-move 18s infinite alternate ease-in-out;
+}
+
+.landing-hero::before {
+    width: 450px;
+    height: 450px;
+    background-color: var(--accent-color);
+    top: -120px;
+    left: -120px;
+    animation-delay: 0s;
+}
+
+.landing-hero::after {
+    width: 550px;
+    height: 550px;
+    background-color: var(--secondary-color);
+    bottom: -180px;
+    right: -180px;
+    animation-delay: 3s;
+}
+
+.landing-content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+}
+
+.landing-content h1 {
+    font-size: clamp(3rem, 8vw, 5rem);
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+}
+
+.landing-content p {
+    font-size: 1.25rem;
+    margin-bottom: 3rem;
+    color: var(--secondary-color);
+}
+
+.landing-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.landing-buttons .cta-button {
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+}
+
+.landing-buttons .cta-button.secondary {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    box-shadow: var(--shadow-subtle);
+}
+
+.landing-buttons .cta-button.secondary:hover {
+    background-color: #E0D7C9;
+    /* Slightly darker beige on hover */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive adjustments for auth pages */
+@media (max-width: 768px) {
+    .auth-container {
+        padding: 2rem 1.5rem;
+    }
+
+    .auth-container h2 {
+        font-size: 1.8rem;
+    }
+
+    .landing-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .landing-content p {
+        font-size: 1rem;
+    }
+
+    .landing-buttons {
+        flex-direction: column;
+    }
+
+    .landing-buttons .cta-button {
+        width: 100%;
+    }
+}
