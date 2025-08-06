@@ -2,10 +2,8 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sterone Nombie - Intermediate Software Developer</title>
-    <link rel="stylesheet" href="styles/styles.css">
+    <!-- ... existing head content ... -->
+    <link rel="stylesheet" href="./styles/styles.css">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,18 +17,27 @@
     <!-- Header & Navigation -->
     <header class="header">
         <div class="header-container">
-            <a href="index.html" class="logo">Sterone Nombie</a>
+            <a href="index.html" class="logo">
+                <img src="./assets/images/logo.jpg" alt="Sterone Nombie Logo" class="site-logo">
+                Sterone Nombie
+            </a>
             <nav class="nav">
-                <ul>
+                <ul class="nav-list">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="projects.html">Projects</a></li>
                     <li><a href="contact.html">Contact</a></li>
-                    <li class="cta-link"><a href="./your-resume.pdf" target="_blank" class="nav-cta">Resume</a>
-                    </li>
-                    <li class="profile-link"><a href="profile.html"><img src="assets/images/sterone-nombie-photo.svg"
+                    <li class="profile-link"><a href="profile.html"><img src="./assets/images/profile-icon.jpg"
                                 alt="Profile" class="profile-icon"></a></li>
+                    <li class="cta-link"><a href="./your-resume.pdf" target="_blank" class="nav-cta">Resume</a></li>
+                    <li><button id="logoutButton" class="nav-cta logout-btn" style="display:none;">Logout</button></li>
                 </ul>
             </nav>
+            <!-- Mobile Menu Toggle (Hamburger Icon) -->
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
         </div>
     </header>
 
@@ -52,7 +59,7 @@
                 <h3 class="section-title">About Me</h3>
                 <div class="about-content">
                     <div class="about-image animated-element fade-in-left">
-                        <img src="assets/images/sterone-nombie-photo.jpg"
+                        <img src="assets/images/profile-icon.jpg"
                             alt="A professional headshot of Sterone Nombie">
                     </div>
                     <div class="about-text animated-element">
@@ -167,7 +174,8 @@
     </footer>
 
 
-    <script src="js/script.js"></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/auth.js"></script>
 </body>
 
 </html>

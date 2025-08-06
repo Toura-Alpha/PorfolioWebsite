@@ -2,9 +2,7 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - Sterone Nombie</title>
+    <!-- ... existing head content ... -->
     <link rel="stylesheet" href="styles/styles.css">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,21 +14,30 @@
 
 <body>
 
-    <!-- Header (same as other pages) -->
+    <!-- Header & Navigation -->
     <header class="header">
         <div class="header-container">
-            <a href="index.html" class="logo">Sterone Nombie</a>
+            <a href="index.html" class="logo">
+                <img src="./assets/images/logo.jpg" alt="Sterone Nombie Logo" class="site-logo">
+                Sterone Nombie
+            </a>
             <nav class="nav">
-                <ul>
+                <ul class="nav-list">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="projects.html">Projects</a></li>
                     <li><a href="contact.html">Contact</a></li>
-                    <li class="cta-link"><a href="./your-resume.pdf" target="_blank" class="nav-cta">Resume</a>
-                    </li>
-                    <li class="profile-link"><a href="profile.html"><img src="assets/images/profile-icon.svg"
-                                alt="Profile" class="profile-icon"></a></li>
+                    <li class="profile-link"><a href="profile.html"><img src="./assets/images/profile-icon.jpg" alt="Profile"
+                                class="profile-icon"></a></li>
+                    <li class="cta-link"><a href="./your-resume.pdf" target="_blank" class="nav-cta">Resume</a></li>
+                    <li><button id="logoutButton" class="nav-cta logout-btn" style="display:none;">Logout</button></li>
                 </ul>
             </nav>
+            <!-- Mobile Menu Toggle (Hamburger Icon) -->
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
         </div>
     </header>
 
@@ -122,7 +129,8 @@
     </footer>
 
 
-    <script src="js/script.js"></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/auth.js"></script>
 </body>
 
 </html>

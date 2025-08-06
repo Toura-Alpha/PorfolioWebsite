@@ -2,10 +2,9 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects - Sterone Nombie</title>
+    <!-- ... existing head content ... -->
     <link rel="stylesheet" href="styles/styles.css">
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -18,18 +17,27 @@
     <!-- Header & Navigation -->
     <header class="header">
         <div class="header-container">
-            <a href="index.html" class="logo">Sterone Nombie</a>
+            <a href="index.html" class="logo">
+                <img src="./assets/images/logo.jpg" alt="Sterone Nombie Logo" class="site-logo">
+                Sterone Nombie
+            </a>
             <nav class="nav">
-                <ul>
+                <ul class="nav-list">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="projects.html">Projects</a></li>
                     <li><a href="contact.html">Contact</a></li>
-                    <li class="cta-link"><a href="./your-resume.pdf" target="_blank" class="nav-cta">Resume</a>
-                    </li>
-                    <li class="profile-link"><a href="profile.html"><img src="assets/images/profile-icon.svg"
+                    <li class="profile-link"><a href="profile.html"><img src="./assets/images/profile-icon.jpg"
                                 alt="Profile" class="profile-icon"></a></li>
+                    <li class="cta-link"><a href="./your-resume.pdf" target="_blank" class="nav-cta">Resume</a></li>
+                    <li><button id="logoutButton" class="nav-cta logout-btn" style="display:none;">Logout</button></li>
                 </ul>
             </nav>
+            <!-- Mobile Menu Toggle (Hamburger Icon) -->
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
         </div>
     </header>
 
@@ -64,7 +72,7 @@
                     <article class="project-card animated-element" style="transition-delay: 0.1s;">
                         <figure>
                             <img src="https://placehold.co/600x400/A36F3D/ECE5D8?text=Project+Two"
-                                alt="A screenshot of a data visualization tool">
+                                alt="A screenshot of a data visualization t                                git status                                git statusool">
                         </figure>
                         <div class="project-content">
                             <h4>Data Visualization Dashboard</h4>
@@ -176,7 +184,8 @@
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/auth.js"></script>
 </body>
 
 </html>
